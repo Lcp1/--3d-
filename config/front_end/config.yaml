@@ -1,0 +1,48 @@
+data_path: ./   # 数据存放路径
+
+# 匹配
+registration_method: ICP   # 选择点云匹配方法，目前支持：NDT 
+
+# 局部地图
+key_frame_distance: 2.0 # 关键帧距离
+local_frame_num: 20
+local_map_filter: voxel_filter # 选择滑窗地图点云滤波方法，目前支持：voxel_filter
+
+# rviz显示
+display_filter: voxel_filter # rviz 实时显示点云时滤波方法，目前支持：voxel_filter
+
+# 当前帧
+frame_filter: voxel_filter # 选择当前帧点云滤波方法，目前支持：voxel_filter
+
+# 各配置选项对应参数
+## 匹配相关参数
+#NDT:
+#    res : 1.0
+ #   step_size : 0.1
+ #   trans_eps : 0.01
+ #   max_iter : 30
+ICP:
+    MCD: 100
+    TEps: 0.00001
+    EFEps: 0.001
+    max_iter : 100  #最大迭代次数
+NDT:
+    res: 1.0        
+    step_size: 0.1    #对应点之间的最大距离
+    trans_eps: 0.01   #设置两次变化矩阵之间的差值
+    max_iter: 30  #最大迭代次数
+## 滤波相关参数
+#voxel_filter:
+   # local_map:
+   #     leaf_size: [0.6, 0.6, 0.6]
+   # frame:
+    #    leaf_size: [1.3, 1.3, 1.3]
+   # display:
+   #     leaf_size: [0.5, 0.5, 0.5]
+voxel_filter:
+    local_map:
+        leaf_size: [0.3, 0.3, 0.3]
+    frame:
+        leaf_size: [0.3, 0.3, 0.3]
+    display:
+        leaf_size: [0.3, 0.5, 0.3]
